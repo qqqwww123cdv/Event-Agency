@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+
+    <% @events.each do |event| %>
+        <p>
+        <%= image_tag(event.picture, style: "max-width: 100px") %>
+        <p/>
+        <%= event.title %>
+        <p>
+        <%= event.description %>
+        <p>
+        <%= link_to 'Show', event %>
+
+        <%= link_to 'Edit', edit_event_path(event) %>
+ 
+        <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <p>
+
+    <% end %>
+
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
