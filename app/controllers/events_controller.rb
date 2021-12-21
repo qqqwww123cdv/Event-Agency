@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /events or /events.json
   def index
     @events = Event.all
@@ -64,6 +64,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:picture, :title, :description)
+      params.require(:event).permit(:picture, :title, :description, :user_id)
     end
 end
