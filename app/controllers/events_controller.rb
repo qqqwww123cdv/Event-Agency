@@ -13,6 +13,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    authorize @event
+  rescue Pundit::NotAuthorizedError
+    respond_to do |format|
+      format.html { redirect_to @event, notice: "Error." }
+      format.json { render json: {}, status: :unprocessable_entity }
+    end
   end
 
   # GET /events/1/edit
@@ -22,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-
+    authorize @event
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
