@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /events or /events.json
   def index
     @events = Event.all
@@ -13,6 +13,12 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    authorize @event
+  rescue Pundit::NotAuthorizedError
+    respond_to do |format|
+      format.html { redirect_to @event, notice: "Error." }
+      format.json { render json: {}, status: :unprocessable_entity }
+    end
   end
 
   # GET /events/1/edit
@@ -22,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events or /events.json
   def create
     @event = Event.new(event_params)
-
+    authorize @event
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
@@ -64,6 +70,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:picture, :title, :description)
+      params.require(:event).permit(:picture, :title, :description, :user_id)
     end
 end
