@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @service.title %>
+</p>
+
+<p>
+  <%= image_tag(@service.picture, style: "max-width: 400px") if @service.picture.attached? %>
+</p>
+
+<p>
+  <%= @service.content %>
+</p>
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
