@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Categories</h1>
+
+    <% @categories.each do |category| %>
+      <%= image_tag(category.images.first, style: "max-width: 100px") %>
+      <p>
+        <%= category.title %>
+        <p>
+        <%= category.description %>
+        <p>
+        <%= category.content %>
+        <p>
+        <%= link_to 'Show', category %>
+        <%= link_to 'Edit', edit_category_path(category) %>
+        <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Category', new_category_path %>

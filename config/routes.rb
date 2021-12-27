@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categories
+  #get 'services/categories', to: 'services#categories', as: 'service_categories'
   resources :services
   devise_for :users
   resources :events
