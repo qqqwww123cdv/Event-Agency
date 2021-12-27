@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :events
-  enum role: %i[user admin]
+  has_many :events
+  has_many :services
+  enum role: %i[user owner admin]
 end

@@ -23,6 +23,12 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    authorize @event
+  rescue Pundit::NotAuthorizedError
+    respond_to do |format|
+      format.html { redirect_to @event, notice: "Err" }
+      format.json { render json: {}, status: :unprocessable_entity }
+    end
   end
 
   # POST /events or /events.json
@@ -60,6 +66,10 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def order
+    
   end
 
   private

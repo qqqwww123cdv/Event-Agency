@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Services</h1>
+
+    <% @services.each do |service| %>
+      <p>
+      <%= image_tag(service.picture, style: "max-width: 100px") %>
+      <p>
+        <%= service.title %>
+        <p>
+        <%= service.content %>
+        <p>
+        <%= link_to 'Show', service %>
+        <%= link_to 'Edit', edit_service_path(service) %>
+        <%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+<br>
+
+<%= link_to 'New Service', new_service_path %>
