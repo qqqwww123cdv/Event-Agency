@@ -1,0 +1,12 @@
+<% (0...category.images.count).each do |image| %>
+  <%= image_tag(category.thumbnail(image)) %>
+<% end %>
+<p>
+  <%= category.title %>
+</p>
+<p>
+  <%= category.description %>
+</p>
+
+<%= link_to 'delete', category_path(category), method: :delete %>
+<%= render partial: 'users/signature', locals: {resource: category} %>

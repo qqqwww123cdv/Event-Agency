@@ -14,3 +14,11 @@
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>
+
+<h2>Categories</h2>
+
+<%= render partial: 'categories/form', locals: {category: @new_category} %>
+
+<%= @service_categories.each do |category| %>
+  <%= render partial: 'categories/category', locals: {category: category} %>
+<% end %>

@@ -8,6 +8,8 @@ class ServicesController < ApplicationController
 
   # GET /services/1 or /services/1.json
   def show
+    @new_category = Category.new(service: @service)
+    @service_categories = @service.categories.order(created_at: :desc)
   end
 
   # GET /services/new
