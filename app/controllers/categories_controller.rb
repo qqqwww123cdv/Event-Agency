@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
   private
 
     def category_params
-      params.require(:category).permit(:title, :description, :service_id, images: []).merge(user: current_user)
+      params.require(:category).permit(:title, :description, :service_id, :picture).merge(user: current_user)
     end
 
     def service_id
