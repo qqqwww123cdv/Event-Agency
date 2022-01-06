@@ -105,6 +105,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+
     mini_mime (1.1.2)
     minitest (5.14.4)
     msgpack (1.4.2)
@@ -225,6 +226,7 @@ DEPENDENCIES
   devise (~> 4.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
