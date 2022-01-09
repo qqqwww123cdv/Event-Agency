@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<div class="headline_main">
+  <div class="headline_sec">
   <%= @service.title %>
-</p>
-
+  </div>
 <p>
   <%= image_tag(@service.picture, style: "max-width: 400px") if @service.picture.attached? %>
 </p>
@@ -19,6 +18,9 @@
 
 <%= render partial: 'categories/form', locals: {category: @new_category} %>
 
-<%= @service_categories.each do |category| %>
+<% @service_categories.each do |category| %>
   <%= render partial: 'categories/category', locals: {category: category} %>
 <% end %>
+<br>
+<%= link_to 'New Event', new_event_path %>
+</div>

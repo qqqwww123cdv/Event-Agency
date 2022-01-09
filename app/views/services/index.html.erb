@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Organizations</h1>
-
+<div class="headline_main">
+  <div class="headline_sec">Our Organizations</div>
     <% @services.each do |service| %>
       <%= render partial: 'services/service_title', locals: {service: service} %>
       <p>
@@ -13,7 +12,8 @@
       <%= link_to 'Show', service %>
       <%= link_to 'Edit', edit_service_path(service) %>
       <%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
     <% end %>
 <br>
-
 <%= link_to 'New Service', new_service_path %>
+</div>
